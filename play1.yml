@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  ignore_errors: true
+  vars:
+    user_name: zeapoe2000
+    group_name: devops
+  vars_files:
+    - variables.yml
+  tasks:
+    - name: Check the time
+      command: datesljsjdjdl
+#      when: ansible_distribution == "zeapoe" or ansible_processor_nproc == 2
+    - name: create user zeapoe
+      user:
+         name: "{{user_name}}"
+         comment: Zeapoe Admin
+    - name: create group
+      group:
+         name: "{{group_name}}"
+         state: present
+    - name: Install package
+      package:
+        name: "{{pkg_name}}"
+        state: present
+
+
